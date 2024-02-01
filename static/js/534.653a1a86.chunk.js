@@ -1,2 +1,0 @@
-"use strict";(self.webpackChunkodos_app=self.webpackChunkodos_app||[]).push([[534],{1534:function(e,n,o){o.r(n);var s=o(184);n.default=function(){return(0,s.jsxs)("div",{children:[(0,s.jsx)("h1",{children:"Ups... Page not found."}),(0,s.jsx)("a",{href:"phonebook",variant:"body2",children:"Home page"})]})}}}]);
-//# sourceMappingURL=534.653a1a86.chunk.js.map
