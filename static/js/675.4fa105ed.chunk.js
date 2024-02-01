@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkodos_app=self.webpackChunkodos_app||[]).push([[675],{9675:function(e,n,r){r.r(n);r(2791);var a=r(184);n.default=function(){return(0,a.jsx)(a.Fragment,{children:(0,a.jsx)("h1",{children:"Hello Developer (Start Page)"})})}}}]);
+//# sourceMappingURL=675.4fa105ed.chunk.js.map

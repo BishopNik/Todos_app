@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkodos_app=self.webpackChunkodos_app||[]).push([[203],{6203:function(n,r,e){e.r(r),e.d(r,{default:function(){return l}});var o=e(2791),t=e(9434),a=function(n){return n.todos.error},u=e(5769),c=e(1661),s=e(184);var l=function(){var n=(0,t.v9)(a),r=(0,t.I0)();return(0,o.useEffect)((function(){null!==n&&(0,c._N)("Error loading data: ".concat(n)),r((0,u.q$)())}),[r,n]),(0,s.jsx)(s.Fragment,{children:(0,s.jsx)("h1",{children:"Hello Developer (Main page Todos)"})})}}}]);
+//# sourceMappingURL=203.1ca52145.chunk.js.map
