@@ -1,27 +1,29 @@
 {
   "files": {
     "main.css": "/Todos_app/static/css/main.7cda0caf.css",
-    "main.js": "/Todos_app/static/js/main.f6b50fc7.js",
+    "main.js": "/Todos_app/static/js/main.6108f74f.js",
     "static/js/888.abc5d26c.chunk.js": "/Todos_app/static/js/888.abc5d26c.chunk.js",
-    "static/js/574.a18b1c11.chunk.js": "/Todos_app/static/js/574.a18b1c11.chunk.js",
+    "static/js/976.88882de5.chunk.js": "/Todos_app/static/js/976.88882de5.chunk.js",
     "static/js/368.f0ed532f.chunk.js": "/Todos_app/static/js/368.f0ed532f.chunk.js",
     "static/js/72.5e77fc44.chunk.js": "/Todos_app/static/js/72.5e77fc44.chunk.js",
     "static/js/972.c76268c4.chunk.js": "/Todos_app/static/js/972.c76268c4.chunk.js",
-    "static/js/464.f185ef81.chunk.js": "/Todos_app/static/js/464.f185ef81.chunk.js",
+    "static/js/464.0d84dad9.chunk.js": "/Todos_app/static/js/464.0d84dad9.chunk.js",
+    "static/js/832.d7c4b325.chunk.js": "/Todos_app/static/js/832.d7c4b325.chunk.js",
     "static/media/icon-spraite.svg": "/Todos_app/static/media/icon-spraite.8246ea22c5cae4dd42b70ad997d07fc9.svg",
     "static/media/avatar.png": "/Todos_app/static/media/avatar.18cd06cd3e6a06f73b1f.png",
     "index.html": "/Todos_app/index.html",
     "main.7cda0caf.css.map": "/Todos_app/static/css/main.7cda0caf.css.map",
-    "main.f6b50fc7.js.map": "/Todos_app/static/js/main.f6b50fc7.js.map",
+    "main.6108f74f.js.map": "/Todos_app/static/js/main.6108f74f.js.map",
     "888.abc5d26c.chunk.js.map": "/Todos_app/static/js/888.abc5d26c.chunk.js.map",
-    "574.a18b1c11.chunk.js.map": "/Todos_app/static/js/574.a18b1c11.chunk.js.map",
+    "976.88882de5.chunk.js.map": "/Todos_app/static/js/976.88882de5.chunk.js.map",
     "368.f0ed532f.chunk.js.map": "/Todos_app/static/js/368.f0ed532f.chunk.js.map",
     "72.5e77fc44.chunk.js.map": "/Todos_app/static/js/72.5e77fc44.chunk.js.map",
     "972.c76268c4.chunk.js.map": "/Todos_app/static/js/972.c76268c4.chunk.js.map",
-    "464.f185ef81.chunk.js.map": "/Todos_app/static/js/464.f185ef81.chunk.js.map"
+    "464.0d84dad9.chunk.js.map": "/Todos_app/static/js/464.0d84dad9.chunk.js.map",
+    "832.d7c4b325.chunk.js.map": "/Todos_app/static/js/832.d7c4b325.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.7cda0caf.css",
-    "static/js/main.f6b50fc7.js"
+    "static/js/main.6108f74f.js"
   ]
 }
