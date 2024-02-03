@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunktodos_app=self.webpackChunktodos_app||[]).push([[404],{404:(e,s,a)=>{a.r(s),a.d(s,{default:()=>l});a(9060);var t=a(2496);const l=()=>(0,t.jsx)(t.Fragment,{children:(0,t.jsx)("h1",{children:"Hello Developer (Start Page)"})})}}]);
+//# sourceMappingURL=404.f96a73f0.chunk.js.map
