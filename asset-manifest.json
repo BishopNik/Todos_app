@@ -1,21 +1,21 @@
 {
   "files": {
     "main.css": "/Todos_app/static/css/main.7cda0caf.css",
-    "main.js": "/Todos_app/static/js/main.ca7747cf.js",
+    "main.js": "/Todos_app/static/js/main.13973106.js",
     "static/js/336.4780319c.chunk.js": "/Todos_app/static/js/336.4780319c.chunk.js",
-    "static/js/520.741d354d.chunk.js": "/Todos_app/static/js/520.741d354d.chunk.js",
+    "static/js/520.e75d6119.chunk.js": "/Todos_app/static/js/520.e75d6119.chunk.js",
     "static/js/368.69e5cf26.chunk.js": "/Todos_app/static/js/368.69e5cf26.chunk.js",
     "static/js/72.a1deba2c.chunk.js": "/Todos_app/static/js/72.a1deba2c.chunk.js",
     "static/js/972.c76268c4.chunk.js": "/Todos_app/static/js/972.c76268c4.chunk.js",
     "static/js/524.2bf24a92.chunk.js": "/Todos_app/static/js/524.2bf24a92.chunk.js",
     "static/js/568.c0af6009.chunk.js": "/Todos_app/static/js/568.c0af6009.chunk.js",
     "static/js/832.d7c4b325.chunk.js": "/Todos_app/static/js/832.d7c4b325.chunk.js",
-    "static/media/icon-spraite.svg": "/Todos_app/static/media/icon-spraite.35cd68e5ac43b526306d1247243d23a6.svg",
+    "static/media/icon-spraite.svg": "/Todos_app/static/media/icon-spraite.4cc516c3a9c5f50391ddd1449cc03fac.svg",
     "index.html": "/Todos_app/index.html",
     "main.7cda0caf.css.map": "/Todos_app/static/css/main.7cda0caf.css.map",
-    "main.ca7747cf.js.map": "/Todos_app/static/js/main.ca7747cf.js.map",
+    "main.13973106.js.map": "/Todos_app/static/js/main.13973106.js.map",
     "336.4780319c.chunk.js.map": "/Todos_app/static/js/336.4780319c.chunk.js.map",
-    "520.741d354d.chunk.js.map": "/Todos_app/static/js/520.741d354d.chunk.js.map",
+    "520.e75d6119.chunk.js.map": "/Todos_app/static/js/520.e75d6119.chunk.js.map",
     "368.69e5cf26.chunk.js.map": "/Todos_app/static/js/368.69e5cf26.chunk.js.map",
     "72.a1deba2c.chunk.js.map": "/Todos_app/static/js/72.a1deba2c.chunk.js.map",
     "972.c76268c4.chunk.js.map": "/Todos_app/static/js/972.c76268c4.chunk.js.map",
@@ -25,6 +25,6 @@
   },
   "entrypoints": [
     "static/css/main.7cda0caf.css",
-    "static/js/main.ca7747cf.js"
+    "static/js/main.13973106.js"
   ]
 }
