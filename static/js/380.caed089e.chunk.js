@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunktodos_app=self.webpackChunktodos_app||[]).push([[380],{7380:(s,c,e)=>{e.d(c,{c:()=>n});e(9060);const a=e.p+"static/media/icon-spraite.ae0056455bc2f1bea78865da26f219dd.svg";var t=e(2496);const n=s=>{let{name:c,...e}=s;return(0,t.jsx)("svg",{...e,children:(0,t.jsx)("use",{href:"".concat(a,"#icon-").concat(c)})})}}}]);
+//# sourceMappingURL=380.caed089e.chunk.js.map
