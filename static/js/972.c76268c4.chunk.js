@@ -1,2 +1,0 @@
-"use strict";(self.webpackChunktodos_app=self.webpackChunktodos_app||[]).push([[972],{7972:(s,e,d)=>{d.r(e),d.d(e,{default:()=>a});var o=d(2496);const a=()=>(0,o.jsxs)("div",{children:[(0,o.jsx)("h1",{children:"Ups... Page not found."}),(0,o.jsx)("a",{href:"todos",children:"Home page"})]})}}]);
-//# sourceMappingURL=972.c76268c4.chunk.js.map
