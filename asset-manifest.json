@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/Todos_app/static/css/main.7cda0caf.css",
-    "main.js": "/Todos_app/static/js/main.5701a1b6.js",
+    "main.js": "/Todos_app/static/js/main.44b28b80.js",
     "static/js/760.900071dd.chunk.js": "/Todos_app/static/js/760.900071dd.chunk.js",
     "static/js/896.b31f5820.chunk.js": "/Todos_app/static/js/896.b31f5820.chunk.js",
     "static/js/540.55cd9730.chunk.js": "/Todos_app/static/js/540.55cd9730.chunk.js",
@@ -10,7 +10,7 @@
     "static/media/icon-spraite.svg": "/Todos_app/static/media/icon-spraite.18dc896d5fa4fb55e020e8998f28fa5c.svg",
     "index.html": "/Todos_app/index.html",
     "main.7cda0caf.css.map": "/Todos_app/static/css/main.7cda0caf.css.map",
-    "main.5701a1b6.js.map": "/Todos_app/static/js/main.5701a1b6.js.map",
+    "main.44b28b80.js.map": "/Todos_app/static/js/main.44b28b80.js.map",
     "760.900071dd.chunk.js.map": "/Todos_app/static/js/760.900071dd.chunk.js.map",
     "896.b31f5820.chunk.js.map": "/Todos_app/static/js/896.b31f5820.chunk.js.map",
     "540.55cd9730.chunk.js.map": "/Todos_app/static/js/540.55cd9730.chunk.js.map",
@@ -19,6 +19,6 @@
   },
   "entrypoints": [
     "static/css/main.7cda0caf.css",
-    "static/js/main.5701a1b6.js"
+    "static/js/main.44b28b80.js"
   ]
 }
