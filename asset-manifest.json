@@ -1,22 +1,22 @@
 {
   "files": {
     "main.css": "/Todos_app/static/css/main.bf43910a.css",
-    "main.js": "/Todos_app/static/js/main.293bcb34.js",
+    "main.js": "/Todos_app/static/js/main.13995208.js",
     "static/js/760.b2ff7e84.chunk.js": "/Todos_app/static/js/760.b2ff7e84.chunk.js",
     "static/js/500.af81b2c6.chunk.js": "/Todos_app/static/js/500.af81b2c6.chunk.js",
-    "static/js/188.cdf7f4f1.chunk.js": "/Todos_app/static/js/188.cdf7f4f1.chunk.js",
+    "static/js/344.0ac1a98c.chunk.js": "/Todos_app/static/js/344.0ac1a98c.chunk.js",
     "static/js/972.9646e025.chunk.js": "/Todos_app/static/js/972.9646e025.chunk.js",
     "static/media/icon-spraite.svg": "/Todos_app/static/media/icon-spraite.d9d3f4cc5b37dbc121d43018ab0ebbd8.svg",
     "index.html": "/Todos_app/index.html",
     "main.bf43910a.css.map": "/Todos_app/static/css/main.bf43910a.css.map",
-    "main.293bcb34.js.map": "/Todos_app/static/js/main.293bcb34.js.map",
+    "main.13995208.js.map": "/Todos_app/static/js/main.13995208.js.map",
     "760.b2ff7e84.chunk.js.map": "/Todos_app/static/js/760.b2ff7e84.chunk.js.map",
     "500.af81b2c6.chunk.js.map": "/Todos_app/static/js/500.af81b2c6.chunk.js.map",
-    "188.cdf7f4f1.chunk.js.map": "/Todos_app/static/js/188.cdf7f4f1.chunk.js.map",
+    "344.0ac1a98c.chunk.js.map": "/Todos_app/static/js/344.0ac1a98c.chunk.js.map",
     "972.9646e025.chunk.js.map": "/Todos_app/static/js/972.9646e025.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.bf43910a.css",
-    "static/js/main.293bcb34.js"
+    "static/js/main.13995208.js"
   ]
 }
