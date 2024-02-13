@@ -7,12 +7,24 @@ const initialState = {
 	items: [],
 	isLoading: false,
 	error: null,
+	createColumnModalOpen: false,
+	editColumnModalOpen: false,
 };
 
 const columnsSlice = createSlice({
 	name: 'columns',
 	initialState,
 	reducers: {
+		resetError: state => {
+			state.error = null;
+			state.createCardModal = null;
+		},
+		setCreateModalOpen: (state, { payload }) => {
+			state.createColumnModalOpen = payload;
+		},
+		setEditModalOpen: (state, { payload }) => {
+			state.editColumnModalOpen = payload;
+		},
 		updateStateAfterDeleteBoard: (state, { payload }) => {
 			const { id } = payload;
 			state.items = state.items.filter(item => item.boarderId !== id);
@@ -56,6 +68,7 @@ const columnsSlice = createSlice({
 					if (item._id === payload._id) return payload;
 					return item;
 				});
+				state.editColumnModalOpen = false;
 			})
 			.addCase(updateColumn.rejected, (state, { payload }) => {
 				state.error = payload;
@@ -64,3 +77,5 @@ const columnsSlice = createSlice({
 });
 
 export const columnsReducer = columnsSlice.reducer;
+
+export const { updateStateAfterDeleteBoard } = columnsSlice.actions;

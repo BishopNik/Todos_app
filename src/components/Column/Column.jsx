@@ -12,7 +12,7 @@ import {
 	ListTasks,
 	ListTasksContainer,
 } from './Column.styled';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { fetchCardsByColumnId } from 'redux/cards/operations';
 import { updateStateAfterDeleteColumn } from 'redux/cards/cardsSlice';
 
@@ -29,9 +29,13 @@ import { delColumn } from 'redux/columns/operations';
 import { MainContext } from 'components/Helpers';
 import { delCard } from 'redux/cards/operations';
 import { useCards } from 'hooks';
+import { setEditModalOpen } from 'redux/columns/columnsSlice';
+import { editModalOpen } from 'redux/columns/selectors';
+import { AddColumnModal } from 'components/Modal';
 
 export const Column = ({ columnData }) => {
 	const { name, _id } = columnData;
+	const isEditOpen = useSelector(editModalOpen);
 	// const [uniqueData, setUniqueData] = useState([]);
 	const [isOpen, setIsOpen] = useState(false);
 	const [cardForEditing, setCardForEditing] = useState(null);
@@ -55,6 +59,10 @@ export const Column = ({ columnData }) => {
 		dispatch(delCard({ id, _id }));
 	};
 
+	const toggleModal = flag => {
+		dispatch(setEditModalOpen(flag));
+	};
+
 	const editCard = data => {
 		setCardForEditing(data);
 		setIsOpen(true);
@@ -64,13 +72,6 @@ export const Column = ({ columnData }) => {
 		setCardForEditing(null);
 		setIsOpen(false);
 	};
-
-	// useEffect(() => {
-	// 	const uniqueItems = Array.from(new Set(allCards.map(item => item._id))).map(id =>
-	// 		allCards.find(item => item._id === id)
-	// 	);
-	// 	setUniqueData(uniqueItems);
-	// }, [allCards]);
 
 	const memoizedCards = useMemo(() => {
 		if (_id && _id in allCards) {
@@ -96,7 +97,13 @@ export const Column = ({ columnData }) => {
 				<Title>
 					{name}
 					<IconsContainer>
-						<EditColumn type='button' width='16' height='16' name='edit' />
+						<EditColumn
+							type='button'
+							width='16'
+							height='16'
+							name='edit'
+							onClick={() => toggleModal(true)}
+						/>
 
 						<DelColumn
 							type='button'
@@ -133,6 +140,12 @@ export const Column = ({ columnData }) => {
 				onRequestClose={onRequestClose}
 				columnId={_id}
 				cardForEditing={cardForEditing}
+			/>
+			<AddColumnModal
+				isOpen={isEditOpen}
+				setIsOpen={toggleModal}
+				columnId={columnData._id}
+				columnForEditing={columnData}
 			/>
 		</Wrapper>
 	);

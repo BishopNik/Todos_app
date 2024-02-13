@@ -1,6 +1,6 @@
 /** @format */
 
-import React from 'react';
+import React, { useEffect, useCallback } from 'react';
 import { Formik } from 'formik';
 import ModalWindow from '../Modal';
 import { customStyles } from '../Modal.styled';
@@ -14,31 +14,41 @@ import {
 	CloseIcon,
 	IconWrapper,
 	AddIcon,
-	ErrorMsg,
+	StyledErrorMessage,
 } from './AddColumnModal.styled';
 import { useDispatch } from 'react-redux';
-import { addColumn } from 'redux/columns/operations';
-import { columnSchema } from 'components/Helpers/index.js';
+import { addColumn, updateColumn } from 'redux/columns/operations';
+import { columnSchema } from 'components/Helpers';
 
-export const AddColumnModal = ({ isOpen, setIsOpen, board }) => {
+export const AddColumnModal = ({ isOpen, setIsOpen, board, columnId, columnForEditing }) => {
 	const dispatch = useDispatch();
+	const isEdit = !!columnForEditing;
 
-	const handleCloseModal = () => {
-		setIsOpen(false);
+	const handleFormSubmit = values => {
+		if (columnForEditing) {
+			dispatch(updateColumn({ ...values, id: columnId }));
+		} else {
+			dispatch(addColumn({ ...values, columnId }));
+		}
 	};
+
+	const handleCloseModal = useCallback(() => {
+		setIsOpen(false);
+	}, [setIsOpen]);
+
+	useEffect(() => {
+		handleCloseModal();
+	}, [handleCloseModal]);
 
 	return (
 		<ModalWindow isOpen={isOpen} onRequestClose={handleCloseModal} style={customStyles}>
 			<Formik
 				initialValues={{
 					name: '',
-					boardId: `${board}`,
+					boarderId: `${board}`,
 				}}
 				validationSchema={columnSchema}
-				onSubmit={(newColumn, actions) => {
-					dispatch(addColumn(newColumn));
-					handleCloseModal();
-				}}
+				onSubmit={(newColumn, actions) => handleFormSubmit(newColumn)}
 			>
 				{({ isSubmitting }) => (
 					<StyledForm autoComplete='off'>
@@ -47,13 +57,13 @@ export const AddColumnModal = ({ isOpen, setIsOpen, board }) => {
 							<CloseIcon name='close' onClick={handleCloseModal} />
 						</HeaderContainer>
 
-						<StyledFormField type='text' name='name' placeholder='Title' autoFocus />
-						<ErrorMsg name='name' component='div' />
+						<StyledFormField type='text' name='name' placeholder='Title' />
+						<StyledErrorMessage name='name' component='div' />
 						<BtnAdd type='submit' disabled={isSubmitting}>
 							<IconWrapper>
 								<AddIcon name='plus' />
 							</IconWrapper>
-							Add
+							{isEdit ? 'Edit' : 'Add'}
 						</BtnAdd>
 					</StyledForm>
 				)}
