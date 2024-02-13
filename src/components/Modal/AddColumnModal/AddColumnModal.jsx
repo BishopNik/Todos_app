@@ -1,6 +1,5 @@
 /** @format */
 
-import React, { useEffect, useCallback } from 'react';
 import { Formik } from 'formik';
 import ModalWindow from '../Modal';
 import { customStyles } from '../Modal.styled';
@@ -32,29 +31,23 @@ export const AddColumnModal = ({ isOpen, setIsOpen, board, columnId, columnForEd
 		}
 	};
 
-	const handleCloseModal = useCallback(() => {
-		setIsOpen(false);
-	}, [setIsOpen]);
-
-	useEffect(() => {
-		handleCloseModal();
-	}, [handleCloseModal]);
+	const onClose = () => setIsOpen(false);
 
 	return (
-		<ModalWindow isOpen={isOpen} onRequestClose={handleCloseModal} style={customStyles}>
+		<ModalWindow isOpen={isOpen} onRequestClose={onClose} style={customStyles}>
 			<Formik
 				initialValues={{
-					name: '',
-					boarderId: `${board}`,
+					name: columnForEditing?.name || '',
+					boardId: `${board}`,
 				}}
 				validationSchema={columnSchema}
-				onSubmit={(newColumn, actions) => handleFormSubmit(newColumn)}
+				onSubmit={handleFormSubmit}
 			>
 				{({ isSubmitting }) => (
 					<StyledForm autoComplete='off'>
 						<HeaderContainer>
-							<ModalTitle>Add column</ModalTitle>
-							<CloseIcon name='close' onClick={handleCloseModal} />
+							<ModalTitle>{isEdit ? 'Edit' : 'Add'}</ModalTitle>
+							<CloseIcon name='close' onClick={onClose} />
 						</HeaderContainer>
 
 						<StyledFormField type='text' name='name' placeholder='Title' />

@@ -36,7 +36,6 @@ import { AddColumnModal } from 'components/Modal';
 export const Column = ({ columnData }) => {
 	const { name, _id } = columnData;
 	const isEditOpen = useSelector(editModalOpen);
-	// const [uniqueData, setUniqueData] = useState([]);
 	const [isOpen, setIsOpen] = useState(false);
 	const [cardForEditing, setCardForEditing] = useState(null);
 	const { allCards } = useCards();
@@ -144,7 +143,7 @@ export const Column = ({ columnData }) => {
 			<AddColumnModal
 				isOpen={isEditOpen}
 				setIsOpen={toggleModal}
-				columnId={columnData._id}
+				columnId={_id}
 				columnForEditing={columnData}
 			/>
 		</Wrapper>
