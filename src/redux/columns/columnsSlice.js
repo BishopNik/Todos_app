@@ -12,6 +12,12 @@ const initialState = {
 const columnsSlice = createSlice({
 	name: 'columns',
 	initialState,
+	reducers: {
+		updateStateAfterDeleteBoard: (state, { payload }) => {
+			const { id } = payload;
+			state.items = state.items.filter(item => item.boarderId !== id);
+		},
+	},
 	extraReducers: builder => {
 		builder
 			.addCase(fetchColumnsByIdBoards.pending, state => {

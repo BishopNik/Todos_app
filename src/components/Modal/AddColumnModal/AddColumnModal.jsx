@@ -32,7 +32,7 @@ export const AddColumnModal = ({ isOpen, setIsOpen, board }) => {
 			<Formik
 				initialValues={{
 					name: '',
-					boarderId: `${board}`,
+					boardId: `${board}`,
 				}}
 				validationSchema={columnSchema}
 				onSubmit={(newColumn, actions) => {
