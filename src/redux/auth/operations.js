@@ -18,7 +18,7 @@ export const register = createAsyncThunk('auth/register', async (credentials, th
 	try {
 		const res = await axios.post('auth/register', credentials);
 		setAuthHeader(res.data.token);
-		toastSuccess(`Registration successfull`);
+		toastSuccess(`Registration successful`);
 		return res.data;
 	} catch ({ response }) {
 		toastError(response?.data?.message);
@@ -30,7 +30,7 @@ export const logIn = createAsyncThunk('auth/login', async (credentials, thunkAPI
 	try {
 		const res = await axios.post('/auth/login', credentials);
 		setAuthHeader(res.data.token);
-		toastSuccess(`Login successfull`);
+		toastSuccess(`Login successful`);
 		return res.data;
 	} catch ({ response }) {
 		toastError(response?.data?.message);
@@ -41,7 +41,7 @@ export const logIn = createAsyncThunk('auth/login', async (credentials, thunkAPI
 export const logOut = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
 	try {
 		await axios.post('/auth/logout');
-		toastSuccess(`Logout successfull`);
+		toastSuccess(`Logout successful`);
 		clearAuthHeader();
 		window.location.reload();
 	} catch ({ response }) {
