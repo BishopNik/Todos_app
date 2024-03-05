@@ -46,6 +46,7 @@ export const logOut = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
 		window.location.reload();
 	} catch ({ response }) {
 		toastError(response?.data?.message);
+		if (response.status === 401) window.location.reload();
 		return thunkAPI.rejectWithValue(response);
 	}
 });
@@ -74,6 +75,7 @@ export const changeTheme = createAsyncThunk('auth/theme', async (thema, thunkAPI
 		return res.data;
 	} catch ({ response }) {
 		toastError(response?.data?.message);
+		if (response.status === 401) window.location.reload();
 		return thunkAPI.rejectWithValue(response?.data?.message);
 	}
 });
@@ -104,6 +106,7 @@ export const changeUserInfo = createAsyncThunk(
 			}
 		} catch ({ response }) {
 			toastError(response?.data?.message);
+			if (response.status === 401) window.location.reload();
 			return thunkAPI.rejectWithValue(response?.data?.message);
 		}
 	}

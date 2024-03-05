@@ -6,6 +6,7 @@ import { fetchColumnsByIdBoards } from 'redux/columns/operations';
 import { Column } from 'components/Column';
 import { Styled } from './Columns.styled';
 import { useBoards, useColumns } from 'hooks';
+// import { DragDropContext, Droppable } from 'react-beautiful-dnd';
 
 export const Columns = ({ board, children }) => {
 	const dispatch = useDispatch();
@@ -18,11 +19,25 @@ export const Columns = ({ board, children }) => {
 
 	const memoizedColumns = useMemo(() => allColumns, [allColumns]);
 
+	// const onDragEnd = e => console.log(e);
+
 	return (
+		// <DragDropContext onDragEnd={onDragEnd}>
+		// 	<Droppable droppableId='droppable'>
+		// 		{(provided, snapshot) => (
 		<Styled>
 			{memoizedColumns.length > 0 &&
-				memoizedColumns.map(item => <Column columnData={item} key={item._id} />)}
+				memoizedColumns.map(item => (
+					<Column
+						columnData={item}
+						key={item._id}
+						// innerRef={provided.innerRef}
+					/>
+				))}
 			{children}
 		</Styled>
+		// 		)}
+		// 	</Droppable>
+		// </DragDropContext>
 	);
 };

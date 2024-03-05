@@ -15,6 +15,7 @@ export const LoaderBox = styled.div`
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	z-index: 9999;
 `;
 
 export const Overlay = styled.div`

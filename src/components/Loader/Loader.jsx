@@ -4,11 +4,11 @@ import { createPortal } from 'react-dom';
 import { ColorRing } from 'react-loader-spinner';
 import { LoaderBox, Overlay } from './Loader.styled';
 
-const loaderPortal = document.querySelector('#modal-root');
+const loaderPortal = document.querySelector('#loader-root');
 
 const Loader = () => {
 	return createPortal(
-		<Overlay>
+		<Overlay style={{ zIndex: '9999' }}>
 			<LoaderBox>
 				<ColorRing
 					visible={true}

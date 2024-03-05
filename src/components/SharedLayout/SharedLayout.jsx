@@ -10,12 +10,14 @@ import { CreateNewBoardModal } from 'components/Modal';
 import { StyleSheetManager } from 'styled-components';
 import { NeedHelpModal } from 'components/Modal';
 import { HeaderComponent } from 'components/Header';
-import { useAuth, useBoards } from 'hooks';
+import { useAuth, useBoards, useCards, useColumns } from 'hooks';
 
 const SharedLayout = () => {
-	const { allBoards } = useBoards();
+	const { allBoards, statusLoading } = useBoards();
 	const { board } = useParams();
 	const { isLoggedIn } = useAuth();
+	const { statusCard } = useCards();
+	const { statusColumn } = useColumns();
 	const selectedBoard = allBoards.find(item => item._id === board);
 
 	const { isOpenSidebar, setIsOpenSidebar, isOpenAddBoard, setOpenIsAddBoard } =
@@ -69,6 +71,7 @@ const SharedLayout = () => {
 					<Suspense fallback={<Loader />}>
 						<Outlet />
 					</Suspense>
+					{(statusCard || statusColumn || statusLoading) && <Loader />}
 				</Main>
 			</Container>
 		</StyleSheetManager>

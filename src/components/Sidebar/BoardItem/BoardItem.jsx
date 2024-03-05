@@ -1,6 +1,6 @@
 /** @format */
 
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import {
 	BoardContainer,
 	BoardNameContainer,
@@ -21,12 +21,14 @@ import { StyleSheetManager } from 'styled-components';
 import { useBoards, useColumns } from 'hooks';
 import { MainContext } from 'components/Helpers';
 
-export const BoardItem = ({ nameBoard, boardId }) => {
+export const BoardItem = ({ nameBoard, boardId, icon }) => {
 	const dispatch = useDispatch();
 	const { board } = useParams();
 	const { statusLoading } = useBoards();
 	const { allColumns } = useColumns();
 	const { setIsOpenAddBoard, setBoardEdit, setDeleted } = useContext(MainContext);
+
+	useEffect(() => {}, []);
 
 	const getById = boardId => {
 		dispatch(getBoardById(boardId));
@@ -63,7 +65,7 @@ export const BoardItem = ({ nameBoard, boardId }) => {
 			<StyleSheetManager shouldForwardProp={prop => prop !== 'active'}>
 				<BoardContainer active={status}>
 					<BoardNameContainer>
-						<BoardIcon name='type-6' active={status} />
+						<BoardIcon name={`type-${icon}`} active={status} />
 						<BoardText active={status}>{nameBoard}</BoardText>
 					</BoardNameContainer>
 

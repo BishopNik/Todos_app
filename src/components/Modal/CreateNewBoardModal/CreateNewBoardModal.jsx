@@ -32,13 +32,13 @@ import background from 'img/background.json';
 import ModalWindow from '../Modal';
 import { resetError } from 'redux/boards/boardsSlice';
 import { addBoard, editBoard } from 'redux/boards/operations';
-import { MainContext } from 'components/Helpers';
+import { MainContext, toastError } from 'components/Helpers';
 import { useBoards } from 'hooks';
 
 export const CreateNewBoardModal = () => {
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
-	const { isOpen, boardId, allBoards, statusLoading } = useBoards();
+	const { isOpen, boardId, allBoards, statusLoading, errorMesg } = useBoards();
 	const { isOpenAddBoard, setIsOpenAddBoard, boardEdit, setBoardEdit } = useContext(MainContext);
 
 	const closeModal = useCallback(() => {
@@ -53,6 +53,13 @@ export const CreateNewBoardModal = () => {
 			dispatch(resetError());
 		}
 	}, [boardId, dispatch, isOpen, navigate, closeModal, setIsOpenAddBoard]);
+
+	useEffect(() => {
+		if (errorMesg) {
+			toastError('Error', errorMesg);
+			dispatch(resetError());
+		}
+	}, [dispatch, errorMesg]);
 
 	const initialValues = boardEdit
 		? allBoards?.find(b => b._id === boardEdit)
@@ -75,7 +82,7 @@ export const CreateNewBoardModal = () => {
 					}
 				}}
 			>
-				{({ values }) => (
+				{({ values, isSubmitting }) => (
 					<StyledForm autoComplete='off'>
 						<HeaderContainer>
 							<Title>{boardEdit ? 'Edit board' : 'New board'}</Title>
@@ -150,7 +157,7 @@ export const CreateNewBoardModal = () => {
 							</BackgroundContainer>
 						</StyleSheetManager>
 
-						<Button type='submit'>
+						<Button type='submit' disabled={isSubmitting}>
 							<IconWrapper>
 								<AddIcon name='add-board' />
 							</IconWrapper>

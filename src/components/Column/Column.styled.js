@@ -70,13 +70,14 @@ export const ListTasksContainer = styled.div`
 	}
 `;
 
-export const ListTasks = styled.div`
+export const ListTasks = styled.ul`
 	grid-area: task;
 	display: flex;
 	flex-direction: column;
 	margin: 0;
 	padding: 0;
 	gap: 8px;
+	list-style: none;
 `;
 
 export const IconsContainer = styled.div`

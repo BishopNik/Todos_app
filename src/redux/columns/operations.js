@@ -12,6 +12,7 @@ export const fetchColumnsByIdBoards = createAsyncThunk(
 			return res.data;
 		} catch ({ response }) {
 			toastError(response?.data?.message);
+			if (response.status === 401) window.location.reload();
 			return thunkAPI.rejectWithValue(response?.data?.message);
 		}
 	}
@@ -23,6 +24,7 @@ export const addColumn = createAsyncThunk('column/addColum', async (newColum, th
 		return res.data;
 	} catch ({ response }) {
 		toastError(response?.data?.message);
+		if (response.status === 401) window.location.reload();
 		return thunkAPI.rejectWithValue(response?.data?.message);
 	}
 });
@@ -33,6 +35,7 @@ export const delColumn = createAsyncThunk('column/delColumn', async (columnId, t
 		return columnId;
 	} catch ({ response }) {
 		toastError(response?.data?.message);
+		if (response.status === 401) window.location.reload();
 		return thunkAPI.rejectWithValue(response?.data?.message);
 	}
 });
@@ -44,6 +47,7 @@ export const updateColumn = createAsyncThunk('column/updateColumn', async (updCo
 		return res.data;
 	} catch ({ response }) {
 		toastError(response?.data?.message);
+		if (response.status === 401) window.location.reload();
 		return thunkAPI.rejectWithValue(response?.data?.message);
 	}
 });

@@ -10,16 +10,15 @@ export const BoardsList = () => {
 	const listRef = useRef(null);
 
 	const handleScroll = ({ deltaY }) => {
-		const delta = deltaY;
-		listRef.current.scrollTop += delta;
+		listRef.current.scrollTop += deltaY;
 	};
 
 	return (
 		<>
 			<ListContainer onWheel={handleScroll} ref={listRef}>
 				{allBoards.length >= 1 &&
-					allBoards.map(({ _id: id, name }) => (
-						<BoardItem key={id} boardId={id} nameBoard={name} />
+					allBoards.map(({ _id: id, name, icon }) => (
+						<BoardItem key={id} boardId={id} nameBoard={name} icon={icon} />
 					))}
 			</ListContainer>
 		</>

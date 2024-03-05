@@ -14,19 +14,18 @@ import {
 import { useDispatch } from 'react-redux';
 import { fetchCardsByColumnId } from 'redux/cards/operations';
 import { updateStateAfterDeleteColumn } from 'redux/cards/cardsSlice';
-
 import {
 	Button,
 	ButtonText,
 	IconWrapper,
 	AddIcon,
 } from 'components/Modal/CreateNewBoardModal/CreateNewBoardModal.styled';
-
 import { AddCardModal } from 'components/Modal';
 import { Card } from 'components/Card/Card';
 import { delColumn } from 'redux/columns/operations';
 import { MainContext } from 'components/Helpers';
 import { useCards, useCardEditing, useColumns } from 'hooks';
+// import { Draggable } from 'react-beautiful-dnd';
 
 export const Column = ({ columnData }) => {
 	const { name, _id } = columnData;
@@ -99,13 +98,20 @@ export const Column = ({ columnData }) => {
 			<ListTasksContainer>
 				<ListTasks>
 					{cards
-						?.map(item => (
+						?.map((item, index) => (
+							// <Draggable key={item._id} draggableId={item._id} index={index}>
+							// 	{(provided, snapshot) => (
 							<Card
 								key={item._id}
+								// ref={provided.innerRef}
+								// {...provided.draggableProps}
+								// {...provided.dragHandleProps}
 								item={item}
 								deleteCard={() => deleteCard({ id: item?._id, _id })}
 								editCard={() => editCard(item)}
 							/>
+							// 	)}
+							// </Draggable>
 						))
 						.reverse()}
 				</ListTasks>

@@ -24,7 +24,7 @@ export const Text = styled.span`
 export const IconThemeMenu = styled(Icon)`
 	width: 16px;
 	height: 16px;
-	stroke:  ${props => props.theme.popup.icon};
+	stroke: ${props => props.theme.popup.icon};
 	transition: all 250ms linear;
 	fill: transparent;
 
@@ -43,7 +43,7 @@ export const PopupBlock = styled.ul`
 	border-radius: 8px;
 	border: 1px solid ${props => props.theme.popup.border};
 	background: ${props => props.theme.popup.background};
-	box-shadow: ${props => props.theme.popup.boxShadow};
+	box-shadow: 0px 4px 16px 0px rgba(17, 17, 17, 0.1);
 	gap: 4px;
 	z-index: 99;
 `;
@@ -54,11 +54,10 @@ export const PopupItem = styled.li`
 	font-size: 14px;
 	letter-spacing: -0.28px;
 	line-height: 21px;
-    list-style: none;
+	list-style: none;
 	&:hover,
 	&.active {
 		color: ${props => props.theme.popup.textAccent};
-
 	}
 
 	cursor: pointer;

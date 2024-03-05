@@ -63,16 +63,30 @@ const authSlice = createSlice({
 				state.isLoggedIn = true;
 				state.isRefreshing = false;
 			})
-			.addCase(refreshUser.rejected, (state, { payload }) => {
+			.addCase(refreshUser.rejected, state => {
 				state.isRefreshing = false;
 				state.isLoggedIn = false;
+			})
+			.addCase(changeUserInfo.pending, state => {
+				state.isLoading = true;
 			})
 			.addCase(changeUserInfo.fulfilled, (state, { payload }) => {
 				state.user = payload.user;
 				if (payload.token) state.token = payload.token;
+				state.isLoading = false;
+			})
+			.addCase(changeUserInfo.rejected, state => {
+				state.isLoading = false;
+			})
+			.addCase(changeTheme.pending, state => {
+				state.isLoading = true;
 			})
 			.addCase(changeTheme.fulfilled, (state, { payload }) => {
 				state.user.thema = payload.user.thema;
+				state.isLoading = false;
+			})
+			.addCase(changeTheme.rejected, state => {
+				state.isLoading = false;
 			});
 	},
 });

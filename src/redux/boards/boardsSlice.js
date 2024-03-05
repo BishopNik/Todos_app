@@ -5,7 +5,7 @@ import { fetchAllBoards, addBoard, editBoard, delBoard } from './operations';
 
 const initialState = {
 	items: [],
-	activeBoard: '',
+	activeBoard: null,
 	isLoading: false,
 	createEditBoardModal: {
 		isOpen: true,
@@ -48,6 +48,7 @@ export const boardsSlice = createSlice({
 				state.isLoading = false;
 				state.error = null;
 				state.items.push(payload);
+				state.activeBoard = payload._id;
 				state.createEditBoardModal.isOpen = false;
 				state.createEditBoardModal.boardId = payload._id;
 			})

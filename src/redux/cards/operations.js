@@ -12,6 +12,7 @@ export const fetchCardsByColumnId = createAsyncThunk(
 			return { columnId, data };
 		} catch ({ response }) {
 			toastError(response?.data?.message);
+			if (response.status === 401) window.location.reload();
 			return thunkAPI.rejectWithValue(response?.data?.message);
 		}
 	}
@@ -24,6 +25,7 @@ export const addCard = createAsyncThunk('card/addCard', async (newCard, thunkAPI
 		return res.data;
 	} catch ({ response }) {
 		toastError(response?.data?.message);
+		if (response.status === 401) window.location.reload();
 		return thunkAPI.rejectWithValue(response?.data?.message);
 	}
 });
@@ -37,6 +39,7 @@ export const delCard = createAsyncThunk(
 			return { cardId, columnId };
 		} catch ({ response }) {
 			toastError(response?.data?.message);
+			if (response.status === 401) window.location.reload();
 			return thunkAPI.rejectWithValue(response?.data?.message);
 		}
 	}
@@ -51,6 +54,7 @@ export const updateCard = createAsyncThunk(
 			return { data, oldColumnId };
 		} catch ({ response }) {
 			toastError(response?.data?.message);
+			if (response.status === 401) window.location.reload();
 			return thunkAPI.rejectWithValue(response?.data?.message);
 		}
 	}

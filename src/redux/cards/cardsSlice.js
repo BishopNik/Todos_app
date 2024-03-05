@@ -23,7 +23,6 @@ const cardsSlice = createSlice({
 			const { [id]: deletedColumn, ...restColumns } = state.items;
 			state.items = restColumns;
 		},
-		
 	},
 	extraReducers: builder => {
 		builder
@@ -35,8 +34,6 @@ const cardsSlice = createSlice({
 				state.isLoading = false;
 				const { columnId, data } = payload;
 				state.items[columnId] = data;
-
-				
 			})
 			.addCase(fetchCardsByColumnId.rejected, (state, { payload }) => {
 				state.isLoading = false;
@@ -53,8 +50,6 @@ const cardsSlice = createSlice({
 				state.createCardModal = false;
 				const { columnId } = payload;
 				state.items[columnId].push(payload);
-
-				
 			})
 			.addCase(addCard.rejected, (state, { payload }) => {
 				state.error = payload;
@@ -72,7 +67,6 @@ const cardsSlice = createSlice({
 				state.items[columnId] = (state.items[columnId] || []).filter(
 					item => item._id !== cardId
 				);
-
 			})
 			.addCase(delCard.rejected, (state, { payload }) => {
 				state.error = payload;
@@ -99,8 +93,6 @@ const cardsSlice = createSlice({
 						return item;
 					});
 				}
-
-				
 			})
 			.addCase(updateCard.rejected, (state, { payload }) => {
 				state.isLoading = false;

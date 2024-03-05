@@ -1,8 +1,8 @@
 /** @format */
 
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import moment from 'moment';
-import { GetColor } from 'components/Helpers';
+import { GetColor, getElementScreenCoordinates } from 'components/Helpers';
 import Tooltip from 'components/Tooltip';
 import { StyleSheetManager } from 'styled-components';
 import {
@@ -23,13 +23,17 @@ import {
 	MoveIcon,
 	EditIcon,
 	DelIcon,
+	ButtonBox,
+	Button,
 } from './Card.styled';
 import { useColumns } from 'hooks';
 
 export const Card = ({ item, deleteCard, editCard }) => {
 	const { name, priority, deadline, text } = item;
 	const [isTooltipOpen, setIsTooltipOpen] = useState(false);
+	const [position, setPosition] = useState(null);
 	const { allColumns } = useColumns();
+	const elementRef = useRef(null);
 
 	const closeTooltip = () => {
 		setIsTooltipOpen(false);
@@ -74,19 +78,34 @@ export const Card = ({ item, deleteCard, editCard }) => {
 								active={active(deadline) <= active(moment()) && deadline}
 							/>
 							<IconContainer>
-								<MoveIcon
-									name='process-task'
-									onClick={() => {
-										if (allColumns.length > 1) setIsTooltipOpen(true);
-									}}
-								/>
-								<EditIcon name='edit' onClick={editCard} />
-								<DelIcon name='delete' onClick={deleteCard} />
+								<ButtonBox>
+									<Button
+										ref={elementRef}
+										type='button'
+										onClick={() => {
+											setPosition(getElementScreenCoordinates(elementRef));
+											if (allColumns.length > 1) setIsTooltipOpen(true);
+										}}
+									>
+										<MoveIcon name='process-task' />
+									</Button>
+								</ButtonBox>
+								<ButtonBox>
+									<Button type='button' onClick={editCard}>
+										<EditIcon name='edit' />
+									</Button>
+								</ButtonBox>
+								<ButtonBox>
+									<Button type='button' onClick={deleteCard}>
+										<DelIcon name='delete' />
+									</Button>
+								</ButtonBox>
 							</IconContainer>
 							<Tooltip
 								isOpen={isTooltipOpen}
 								onRequestClose={closeTooltip}
 								card={item}
+								position={position}
 							/>
 						</Info>
 					</CardContent>

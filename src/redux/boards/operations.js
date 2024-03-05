@@ -8,16 +8,18 @@ export const fetchAllBoards = createAsyncThunk('boards/fetchAll', async (_, thun
 	try {
 		const response = await axios.get('/boards');
 		return response.data;
-	} catch (error) {
-		return thunkAPI.rejectWithValue(error.message);
+	} catch ({ response }) {
+		if (response.status === 401) window.location.reload();
+		return thunkAPI.rejectWithValue(response?.data.message);
 	}
 });
 export const getBoardById = createAsyncThunk('boards/:boardName', async (boardId, thunkAPI) => {
 	try {
 		const response = await axios.get(`/boards/${boardId}`);
 		return response.data;
-	} catch (error) {
-		return thunkAPI.rejectWithValue(error.message);
+	} catch ({ response }) {
+		if (response.status === 401) window.location.reload();
+		return thunkAPI.rejectWithValue(response?.data.message);
 	}
 });
 
@@ -28,7 +30,7 @@ export const addBoard = createAsyncThunk('boards/addBoard', async (newBoard, thu
 		return response.data;
 	} catch ({ response }) {
 		toastError(response?.data?.message);
-
+		if (response.status === 401) window.location.reload();
 		return thunkAPI.rejectWithValue(response?.data.message);
 	}
 });
@@ -41,6 +43,7 @@ export const editBoard = createAsyncThunk(
 			return response.data;
 		} catch ({ response }) {
 			toastError(response?.data?.message);
+			if (response.status === 401) window.location.reload();
 			return thunkAPI.rejectWithValue(response?.data?.message);
 		}
 	}
@@ -53,6 +56,7 @@ export const delBoard = createAsyncThunk('boards/fetchDel', async (id, thunkAPI)
 		return id;
 	} catch ({ response }) {
 		toastError(response?.data?.message);
+		if (response.status === 401) window.location.reload();
 		return thunkAPI.rejectWithValue(response?.data?.message);
 	}
 });

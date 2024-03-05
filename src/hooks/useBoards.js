@@ -7,6 +7,7 @@ import {
 	boardsState,
 	statusLoadingState,
 	activeBoardState,
+	statusError,
 } from 'redux/boards/selectors';
 
 export const useBoards = () => {
@@ -14,6 +15,7 @@ export const useBoards = () => {
 	const allBoards = useSelector(boardsState);
 	const statusLoading = useSelector(statusLoadingState);
 	const activeBoard = useSelector(activeBoardState);
+	const errorMesg = useSelector(statusError);
 
 	return {
 		isOpen,
@@ -21,5 +23,6 @@ export const useBoards = () => {
 		allBoards,
 		statusLoading,
 		activeBoard,
+		errorMesg,
 	};
 };

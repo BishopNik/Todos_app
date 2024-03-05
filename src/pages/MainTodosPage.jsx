@@ -39,9 +39,9 @@ function MainTodosPage() {
 	useEffect(() => {
 		if (allBoards.length === 0) {
 			navigate('/todos');
-			dispatch(setActiveBoard(''));
+			if (!firstRun) dispatch(setActiveBoard(null));
 		}
-	}, [allBoards, dispatch, navigate]);
+	}, [allBoards, dispatch, firstRun, navigate]);
 
 	useEffect(() => {
 		if (!deleted) return;

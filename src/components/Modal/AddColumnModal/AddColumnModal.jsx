@@ -4,7 +4,6 @@ import React, { useContext, useEffect, useCallback } from 'react';
 import { Formik } from 'formik';
 import ModalWindow from '../Modal';
 import { customStyles } from '../Modal.styled';
-
 import {
 	ModalTitle,
 	StyledForm,
