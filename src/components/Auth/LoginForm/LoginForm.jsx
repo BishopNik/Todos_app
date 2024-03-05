@@ -65,7 +65,7 @@ const LoginForm = () => {
 								<StyledField
 									name='password'
 									type={showPassword ? 'text' : 'password'}
-									placeholder='Create a password'
+									placeholder='Enter a password'
 								/>
 								<IconHideShow name='hide-show' onClick={togglePasswordVisibility}>
 									{showPassword ? 'Hide' : 'Show'}
