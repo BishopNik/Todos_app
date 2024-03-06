@@ -62,7 +62,7 @@ export const BtnAddColumn = styled.button`
 
 	border: none;
 	cursor: pointer;
-	height: 58px;
+	height: 56px;
 `;
 
 export const StyledIconAdd = styled.span`
