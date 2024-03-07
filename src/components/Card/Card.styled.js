@@ -12,6 +12,8 @@ export const CardContainer = styled.li`
 	background-color: ${props => props.theme.profile.background};
 	border-radius: 7px;
 	overflow: hidden;
+	outline: ${props =>
+		props.drag === 'true' ? `1px solid ${props.theme.colum.buttonBackground}` : null};
 `;
 
 export const PriorityLine = styled.div`

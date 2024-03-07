@@ -1,6 +1,7 @@
 /** @format */
 
 import React, { useContext, useState, useEffect, useMemo } from 'react';
+import { Draggable } from 'react-beautiful-dnd';
 import {
 	Wrapper,
 	Title,
@@ -25,9 +26,8 @@ import { Card } from 'components/Card/Card';
 import { delColumn } from 'redux/columns/operations';
 import { MainContext } from 'components/Helpers';
 import { useCards, useCardEditing, useColumns } from 'hooks';
-// import { Draggable } from 'react-beautiful-dnd';
 
-export const Column = ({ columnData }) => {
+export const Column = ({ columnData, refColumn, providedPlaceholder }) => {
 	const { name, _id } = columnData;
 	const { isOpen, setIsOpen, cardForEditing, editCard, onRequestClose, deleteCard } =
 		useCardEditing();
@@ -95,25 +95,24 @@ export const Column = ({ columnData }) => {
 					</IconsContainer>
 				</Title>
 			</List>
-			<ListTasksContainer>
+			<ListTasksContainer ref={refColumn}>
 				<ListTasks>
-					{cards
-						?.map((item, index) => (
-							// <Draggable key={item._id} draggableId={item._id} index={index}>
-							// 	{(provided, snapshot) => (
-							<Card
-								key={item._id}
-								// ref={provided.innerRef}
-								// {...provided.draggableProps}
-								// {...provided.dragHandleProps}
-								item={item}
-								deleteCard={() => deleteCard({ id: item?._id, _id })}
-								editCard={() => editCard(item)}
-							/>
-							// 	)}
-							// </Draggable>
-						))
-						.reverse()}
+					{cards?.map((item, index) => (
+						<Draggable key={item._id} draggableId={item._id} index={index}>
+							{(provided, snapshot) => (
+								<Card
+									refCard={provided.innerRef}
+									drag={snapshot.isDragging.toString()}
+									item={item}
+									{...provided.draggableProps}
+									{...provided.dragHandleProps}
+									deleteCard={() => deleteCard({ id: item?._id, _id })}
+									editCard={() => editCard(item)}
+								/>
+							)}
+						</Draggable>
+					))}
+					{providedPlaceholder}
 				</ListTasks>
 			</ListTasksContainer>
 			<Button

@@ -1,6 +1,6 @@
 /** @format */
 
-import React, { useContext, useEffect } from 'react';
+import React, { useContext } from 'react';
 import {
 	BoardContainer,
 	BoardNameContainer,
@@ -27,8 +27,6 @@ export const BoardItem = ({ nameBoard, boardId, icon }) => {
 	const { statusLoading } = useBoards();
 	const { allColumns } = useColumns();
 	const { setIsOpenAddBoard, setBoardEdit, setDeleted } = useContext(MainContext);
-
-	useEffect(() => {}, []);
 
 	const getById = boardId => {
 		dispatch(getBoardById(boardId));

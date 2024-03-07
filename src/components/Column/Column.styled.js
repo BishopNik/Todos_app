@@ -7,13 +7,14 @@ export const Wrapper = styled.li`
 	width: 347px;
 	max-width: 100vw;
 	display: grid;
-	gap: 8px;
+	gap: 14px;
 	grid-template-columns: 1fr;
 	grid-template-areas:
 		'title'
 		'task'
 		'add';
 	grid-template-rows: 56px auto 56px;
+	overflow: hidden;
 
 	@media screen and (min-width: 768px) {
 		width: 350px;
@@ -49,29 +50,30 @@ export const List = styled.div`
 `;
 
 export const ListTasksContainer = styled.div`
+	grid-area: task;
 	width: 100%;
 	overflow-y: auto;
 	overflow-x: hidden;
-	margin-bottom: 14px;
 
 	&::-webkit-scrollbar {
 		width: 8px;
 		background: rgba(255, 255, 255, 0.1);
 		border-radius: 4px;
 	}
+
 	&::-webkit-scrollbar-thumb {
 		height: 142px;
 		background-color: rgba(18, 18, 18, 1);
 		border-radius: 4px;
 		box-shadow: inset 1px 1px 10px rgba(0, 0, 0, 0.25);
 	}
+
 	&::-webkit-scrollbar-thumb:hover {
 		background-color: ${props => props.theme.sidebar.addButtonBackground};
 	}
 `;
 
 export const ListTasks = styled.ul`
-	grid-area: task;
 	display: flex;
 	flex-direction: column;
 	margin: 0;
