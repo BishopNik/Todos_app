@@ -78,7 +78,6 @@ export const ListTasks = styled.ul`
 	flex-direction: column;
 	margin: 0;
 	padding: 0;
-	gap: 8px;
 	list-style: none;
 `;
 

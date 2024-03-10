@@ -50,10 +50,23 @@ export const updateCard = createAsyncThunk(
 	async ({ id, columnId, oldColumnId, ...rest }, thunkAPI) => {
 		try {
 			const { data } = await axios.patch(`/card/${id}`, { columnId, ...rest });
-			toastSuccess('Update Card');
+			toastSuccess('The card has been updated');
 			return { data, oldColumnId };
 		} catch ({ response }) {
-			toastError(response?.data?.message);
+			toastSuccess('Error updating card');
+			if (response.status === 401) window.location.reload();
+			return thunkAPI.rejectWithValue(response?.data?.message);
+		}
+	}
+);
+
+export const removeCardInBase = createAsyncThunk(
+	'card/removeCard',
+	async ({ id, columnId, oldColumnId, ...rest }, thunkAPI) => {
+		try {
+			const { data } = await axios.patch(`/card/${id}`, { columnId, ...rest });
+			return { data, oldColumnId };
+		} catch ({ response }) {
 			if (response.status === 401) window.location.reload();
 			return thunkAPI.rejectWithValue(response?.data?.message);
 		}

@@ -1,6 +1,6 @@
 /** @format */
 
-import React, { useContext, useState, useEffect, useMemo } from 'react';
+import React, { useContext, useEffect, useMemo } from 'react';
 import { Draggable } from 'react-beautiful-dnd';
 import {
 	Wrapper,
@@ -35,7 +35,6 @@ export const Column = ({ columnData, refColumn, providedPlaceholder }) => {
 	const { statusColumn } = useColumns();
 	const dispatch = useDispatch();
 	const { filter, setIsOpenAddColumn, setColumnEdit } = useContext(MainContext);
-	const [cards, setCards] = useState([]);
 
 	useEffect(() => {
 		dispatch(fetchCardsByColumnId(_id));
@@ -55,7 +54,7 @@ export const Column = ({ columnData, refColumn, providedPlaceholder }) => {
 	};
 
 	const memoizedCards = useMemo(() => {
-		if (_id && _id in allCards) {
+		if (_id && allCards[_id]?.length) {
 			const cardForColumn = allCards[_id]?.filter(card => {
 				if (filter === 'all') {
 					return card.columnId === _id;
@@ -63,14 +62,10 @@ export const Column = ({ columnData, refColumn, providedPlaceholder }) => {
 					return card.columnId === _id && card.priority === filter;
 				}
 			});
-			return cardForColumn;
+			return cardForColumn.map((card, ind) => ({ ...card, indexCard: ind }));
 		}
 		return [];
 	}, [_id, allCards, filter]);
-
-	useEffect(() => {
-		setCards(memoizedCards);
-	}, [memoizedCards]);
 
 	return (
 		<Wrapper>
@@ -97,15 +92,15 @@ export const Column = ({ columnData, refColumn, providedPlaceholder }) => {
 			</List>
 			<ListTasksContainer ref={refColumn}>
 				<ListTasks>
-					{cards?.map((item, index) => (
+					{memoizedCards?.map((item, index) => (
 						<Draggable key={item._id} draggableId={item._id} index={index}>
 							{(provided, snapshot) => (
 								<Card
 									refCard={provided.innerRef}
-									drag={snapshot.isDragging.toString()}
-									item={item}
 									{...provided.draggableProps}
 									{...provided.dragHandleProps}
+									drag={snapshot.isDragging.toString()}
+									item={item}
 									deleteCard={() => deleteCard({ id: item?._id, _id })}
 									editCard={() => editCard(item)}
 								/>
@@ -123,7 +118,7 @@ export const Column = ({ columnData, refColumn, providedPlaceholder }) => {
 				<IconWrapper>
 					<AddIcon name='add-board' />
 				</IconWrapper>
-				<ButtonText>{!cards?.length ? 'Add card' : 'Add another card'}</ButtonText>
+				<ButtonText>{!memoizedCards?.length ? 'Add card' : 'Add another card'}</ButtonText>
 			</Button>
 			<AddCardModal
 				isOpen={isOpen}

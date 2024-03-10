@@ -1,6 +1,7 @@
 /** @format */
 
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import moment from 'moment';
 import { GetColor, getElementScreenCoordinates } from 'components/Helpers';
 import Tooltip from 'components/Tooltip';
@@ -27,13 +28,17 @@ import {
 	Button,
 } from './Card.styled';
 import { useColumns } from 'hooks';
+import { removeCardInBase } from 'redux/cards/operations';
+import { resetError } from 'redux/cards/cardsSlice';
 
 export const Card = ({ item, deleteCard, editCard, refCard, drag, ...dragHandleProps }) => {
+	const dispatch = useDispatch();
 	const { name, priority, deadline, text } = item;
 	const [isTooltipOpen, setIsTooltipOpen] = useState(false);
 	const [position, setPosition] = useState(null);
 	const { allColumns } = useColumns();
 	const elementRef = useRef(null);
+	const [idx] = useState(item.indexCard);
 
 	const closeTooltip = () => {
 		setIsTooltipOpen(false);
@@ -51,6 +56,21 @@ export const Card = ({ item, deleteCard, editCard, refCard, drag, ...dragHandleP
 	};
 
 	const priorityLevel = GetColor(priority);
+
+	useEffect(() => {
+		if (idx === item.indexCard) {
+			return;
+		}
+		dispatch(
+			removeCardInBase({
+				id: item._id,
+				columnId: item.columnId,
+				name: item.name,
+				indexCard: item.indexCard,
+				oldColumnId: item.columnId,
+			})
+		).then(() => dispatch(resetError()));
+	}, [dispatch, idx, item._id, item.columnId, item.indexCard, item.name]);
 
 	return (
 		<CardContainer ref={refCard} drag={drag} {...dragHandleProps}>

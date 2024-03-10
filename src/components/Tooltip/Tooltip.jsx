@@ -3,19 +3,27 @@
 import React, { useEffect, useState } from 'react';
 import ModalWindow, { customStyles } from '../Modal';
 import { TooltipButton, TooltipContent, IconProcess } from './Tooltip.styled';
-import { useColumns } from 'hooks';
+import { useCards, useColumns } from 'hooks';
 import { useDispatch } from 'react-redux';
 import { updateCard } from 'redux/cards/operations';
+import { toastSuccess, toastError } from 'components/Helpers';
 
 const Tooltip = ({ isOpen, onRequestClose, card, position }) => {
 	const dispatch = useDispatch();
 	const { allColumns } = useColumns();
+	const { allCards } = useCards();
 	const [style, setStyle] = useState(customStyles);
 	const { _id: id, columnId: oldColumnId, name } = card;
 
 	const handleClick = columnId => {
-		dispatch(updateCard({ id, columnId, name, oldColumnId }));
-		onRequestClose();
+		try {
+			const indexCard = allCards[columnId].length;
+			dispatch(updateCard({ id, columnId, name, indexCard, oldColumnId }));
+			onRequestClose();
+			toastSuccess('Card has removed');
+		} catch (error) {
+			toastError(error);
+		}
 	};
 
 	useEffect(() => {

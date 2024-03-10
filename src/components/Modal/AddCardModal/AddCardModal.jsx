@@ -27,10 +27,12 @@ import { addCardValidationSchema } from 'components/Helpers';
 import { useDispatch } from 'react-redux';
 import { addCard, updateCard } from 'redux/cards/operations';
 import { useCards } from 'hooks';
+import { resetError } from 'redux/cards/cardsSlice';
 
 export const AddCardModal = ({ isOpen, onRequestClose, columnId, cardForEditing }) => {
 	const dispatch = useDispatch();
 	const { statusCreateCard } = useCards();
+	const { allCards } = useCards();
 
 	const isEdit = !!cardForEditing;
 
@@ -45,13 +47,15 @@ export const AddCardModal = ({ isOpen, onRequestClose, columnId, cardForEditing 
 				})
 			);
 		} else {
-			dispatch(addCard({ ...values, columnId }));
+			const indexCard = allCards[columnId].length;
+			dispatch(addCard({ ...values, indexCard, columnId }));
 		}
 	};
 
 	useEffect(() => {
 		if (statusCreateCard === false && isOpen) {
 			onRequestClose();
+			dispatch(resetError());
 		}
 	}, [dispatch, isOpen, onRequestClose, statusCreateCard]);
 

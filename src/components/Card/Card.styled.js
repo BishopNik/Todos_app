@@ -14,6 +14,10 @@ export const CardContainer = styled.li`
 	overflow: hidden;
 	outline: ${props =>
 		props.drag === 'true' ? `1px solid ${props.theme.colum.buttonBackground}` : null};
+
+	&:not(:last-child) {
+		margin-bottom: 8px;
+	}
 `;
 
 export const PriorityLine = styled.div`
@@ -55,7 +59,7 @@ export const DescriptionText = styled.p`
 	width: 100%;
 	overflow: hidden;
 	text-overflow: ellipsis;
-	cursor: default;
+	cursor: inherit;
 `;
 
 export const Info = styled.li`
