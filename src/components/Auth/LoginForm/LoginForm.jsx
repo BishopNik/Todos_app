@@ -16,14 +16,12 @@ import {
 	StyledField,
 	StyledFieldContainer,
 	StyledForm,
-	ButtonGoogle,
-	GoogleIcon,
-	IconContainer,
 	FieldContainer,
 } from './LoginForm.styled';
 import { useState } from 'react';
 import { useAuth } from 'hooks';
 import Loader from 'components/Loader';
+import ButtonGoogle from '../Google';
 
 const LoginForm = () => {
 	const dispatch = useDispatch();
@@ -79,12 +77,7 @@ const LoginForm = () => {
 					<Button type='submit'>
 						<ButtonText>Log In Now</ButtonText>
 					</Button>
-					<ButtonGoogle type='submit'>
-						<IconContainer>
-							<GoogleIcon name='Google__G__logo' />
-						</IconContainer>
-						<ButtonText>Log In with Google</ButtonText>
-					</ButtonGoogle>
+					<ButtonGoogle />
 				</StyledForm>
 			</Formik>
 		</Container>

@@ -51,7 +51,7 @@ export const logOut = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
 	}
 });
 
-export const refreshUser = createAsyncThunk('auth/refresh', async (_, thunkAPI) => {
+export const refreshUser = createAsyncThunk('auth/refreshUser', async (_, thunkAPI) => {
 	const state = thunkAPI.getState();
 	const persistedToken = state.auth.token;
 
@@ -64,7 +64,6 @@ export const refreshUser = createAsyncThunk('auth/refresh', async (_, thunkAPI) 
 		const res = await axios.get('/auth/current');
 		return res.data;
 	} catch ({ response }) {
-		toastError(`Please log in`);
 		return thunkAPI.rejectWithValue(response?.data?.message);
 	}
 });
@@ -81,7 +80,7 @@ export const changeTheme = createAsyncThunk('auth/theme', async (thema, thunkAPI
 });
 
 export const changeUserInfo = createAsyncThunk(
-	'user/update',
+	'user/changeUserInfo',
 	async ({ avatarURL, email, name, password }, thunkAPI) => {
 		try {
 			const formData = new FormData();

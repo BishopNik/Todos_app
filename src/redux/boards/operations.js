@@ -49,7 +49,7 @@ export const editBoard = createAsyncThunk(
 	}
 );
 
-export const delBoard = createAsyncThunk('boards/fetchDel', async (id, thunkAPI) => {
+export const delBoard = createAsyncThunk('boards/delBoard', async (id, thunkAPI) => {
 	try {
 		await axios.delete(`/boards/${id}`);
 		toastSuccess(`Successful removal`);

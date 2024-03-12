@@ -5,7 +5,7 @@ import axios from 'axios';
 import { toastError, toastSuccess } from 'components/Helpers';
 
 export const fetchColumnsByIdBoards = createAsyncThunk(
-	'column/fetchColumns',
+	'column/fetchColumnsByIdBoards',
 	async (columnId, thunkAPI) => {
 		try {
 			const res = await axios.get(`/column/${columnId}`);

@@ -61,7 +61,7 @@ export const updateCard = createAsyncThunk(
 );
 
 export const removeCardInBase = createAsyncThunk(
-	'card/removeCard',
+	'card/removeCardInBase',
 	async ({ id, columnId, oldColumnId, ...rest }, thunkAPI) => {
 		try {
 			const { data } = await axios.patch(`/card/${id}`, { columnId, ...rest });

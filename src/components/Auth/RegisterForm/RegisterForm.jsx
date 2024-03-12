@@ -7,7 +7,7 @@ import { register } from 'redux/auth/operations';
 import { RegisterSchema } from 'components/Helpers/ModalSchemas';
 import { useAuth } from 'hooks';
 import Loader from 'components/Loader';
-
+import ButtonGoogle from '../Google';
 import {
 	Button,
 	ButtonText,
@@ -96,6 +96,7 @@ const RegisterForm = () => {
 						<Button type='submit' disabled={isSubmitting}>
 							<ButtonText>Register Now</ButtonText>
 						</Button>
+						<ButtonGoogle />
 					</StyledForm>
 				)}
 			</Formik>

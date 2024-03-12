@@ -96,6 +96,7 @@ export const IconHideShow = styled(Icon)`
 export const Button = styled.button`
 	display: flex;
 	width: 100%;
+	margin-bottom: 15px;
 	padding: 14px;
 	outline: none;
 	border: none;

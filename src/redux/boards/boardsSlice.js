@@ -25,6 +25,9 @@ export const boardsSlice = createSlice({
 		setActiveBoard: (state, { payload }) => {
 			state.activeBoard = payload;
 		},
+		resetActiveBoard: state => {
+			state.activeBoard = null;
+		},
 	},
 	extraReducers: builder => {
 		builder
@@ -92,4 +95,4 @@ export const boardsSlice = createSlice({
 
 export const boardsReducer = boardsSlice.reducer;
 
-export const { resetError, setActiveBoard } = boardsSlice.actions;
+export const { resetError, setActiveBoard, resetActiveBoard } = boardsSlice.actions;

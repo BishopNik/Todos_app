@@ -12,6 +12,7 @@ import { PrivateRoute } from 'components/PrivateRoute';
 
 const StartPage = lazy(() => import('pages/StartPage'));
 const AuthPage = lazy(() => import('pages/AuthPage'));
+const GoogleAuth = lazy(() => import('pages/GoogleAuth'));
 const MainTodosPage = lazy(() => import('pages/MainTodosPage'));
 const UnknownPage = lazy(() => import('pages/UnknownPage'));
 
@@ -30,15 +31,19 @@ function App() {
 			<Route path='/' element={<SharedLayout />}>
 				<Route
 					index
-					element={<RestrictedRoute component={StartPage} redirectTo='/todos' />}
+					element={<RestrictedRoute component={<StartPage />} redirectTo='/todos' />}
 				/>
 				<Route
 					path='auth/:page'
-					element={<RestrictedRoute component={AuthPage} redirectTo='/todos' />}
+					element={<RestrictedRoute component={<AuthPage />} redirectTo='/todos' />}
+				/>
+				<Route
+					path='/google_auth'
+					element={<RestrictedRoute component={<GoogleAuth />} redirectTo='/todos' />}
 				/>
 				<Route
 					path='/todos'
-					element={<PrivateRoute component={MainTodosPage} redirectTo='/' />}
+					element={<PrivateRoute component={<MainTodosPage />} redirectTo='/' />}
 				>
 					<Route path='/todos/:board' element={<MainTodosPage />} />
 				</Route>
