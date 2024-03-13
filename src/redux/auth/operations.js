@@ -4,7 +4,9 @@ import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { toastError, toastSuccess } from 'components/Helpers';
 
-axios.defaults.baseURL = `https://todos-api-i1vi.onrender.com/api`;
+const host = process.env.REACT_APP_BASE_BACKEND_URL;
+
+axios.defaults.baseURL = `${host}/api`;
 
 const setAuthHeader = token => {
 	axios.defaults.headers.common.Authorization = `Bearer ${token}`;
