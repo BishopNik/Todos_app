@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunktodos_app=self.webpackChunktodos_app||[]).push([[272],{8892:(e,t,s)=>{s.r(t),s.d(t,{default:()=>h});var n=s(9902),c=s(9060),a=s(4992),o=s(2864),r=s(680),i=s(2496);const h=function(){const e=(0,a.OY)();return(0,c.useEffect)((()=>{const t=new URLSearchParams(window.location.search).get("token");t&&(e((0,o.k)(t)),e((0,r.A9)()))}),[e]),(0,i.jsx)("div",{style:{display:"flex",justifyContent:"center",alignItems:"center",height:"100vh"},children:(0,i.jsx)(n.c,{})})}}}]);
+//# sourceMappingURL=272.4f78ecb0.chunk.js.map
