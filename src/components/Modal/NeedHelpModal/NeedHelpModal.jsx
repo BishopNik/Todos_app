@@ -26,7 +26,7 @@ export const NeedHelpModal = () => {
 	const { isOpenHelp, setIsOpenHelp } = useContext(MainContext);
 	const [isSending, setIsSending] = useState(false);
 
-	const handlerOnSubmit = async (values, actions) => {
+	const handlerOnSubmit = async values => {
 		setIsSending(true);
 		try {
 			const { email, comment } = values;
