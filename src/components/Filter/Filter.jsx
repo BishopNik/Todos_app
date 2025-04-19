@@ -1,6 +1,6 @@
 /** @format */
 
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 import { MainContext } from 'components/Helpers';
 import {
 	CloseButton,
@@ -16,19 +16,18 @@ import {
 	Label,
 } from './Filter.styled';
 
+const radioOptions = [
+	{ value: 'without', label: 'Without priority', color: 'rgba(255, 255, 255, 0.3)' },
+	{ value: 'low', label: 'Low', color: 'rgba(143, 161, 208, 1)' },
+	{ value: 'medium', label: 'Medium', color: 'rgba(224, 156, 181, 1)' },
+	{ value: 'high', label: 'High', color: 'rgba(190, 219, 176, 1)' },
+];
+
 export const Filter = ({ setIsOpen }) => {
 	const { filter, setFilter } = useContext(MainContext);
-	const [selectedOption, setSelectedOption] = useState(filter);
 
-	const handleOptionChange = ({ target }) => {
-		setSelectedOption(target.value);
-		setFilter(target.value);
-	};
+	const handleOptionChange = ({ target: { value } }) => setFilter(value);
 
-	const handlerShowAll = () => {
-		setFilter('all');
-		setIsOpen(false);
-	};
 	return (
 		<ModalContainer>
 			<TitleBox>
@@ -38,58 +37,24 @@ export const Filter = ({ setIsOpen }) => {
 				<IconClose name='close' />
 			</CloseButton>
 			<div>
-				<LinkShowAll onClick={handlerShowAll}>Show all</LinkShowAll>
+				<LinkShowAll onClick={() => setFilter('all')}>Show all</LinkShowAll>
 			</div>
 			<TitleRadioButtons>Label color</TitleRadioButtons>
 			<RadioButtonGroup>
-				<RadioButton>
-					<Input
-						type='radio'
-						value='without'
-						checked={selectedOption === 'without'}
-						onChange={handleOptionChange}
-						id='without'
-					/>
-					<Label htmlFor='without' color='rgba(255, 255, 255, 0.3)'>
-						Without priority
-					</Label>
-				</RadioButton>
-				<RadioButton>
-					<Input
-						type='radio'
-						value='low'
-						checked={selectedOption === 'low'}
-						onChange={handleOptionChange}
-						id='low'
-					/>
-					<Label htmlFor='low' color='rgba(143, 161, 208, 1)'>
-						Low
-					</Label>
-				</RadioButton>
-				<RadioButton>
-					<Input
-						type='radio'
-						value='medium'
-						checked={selectedOption === 'medium'}
-						onChange={handleOptionChange}
-						id='medium'
-					/>
-					<Label htmlFor='medium' color='rgba(224, 156, 181, 1)'>
-						Medium
-					</Label>
-				</RadioButton>
-				<RadioButton>
-					<Input
-						type='radio'
-						value='high'
-						checked={selectedOption === 'high'}
-						onChange={handleOptionChange}
-						id='high'
-					/>
-					<Label htmlFor='high' color='rgba(190, 219, 176, 1)'>
-						High
-					</Label>
-				</RadioButton>
+				{radioOptions.map(({ value, label, color }) => (
+					<RadioButton key={value}>
+						<Input
+							type='radio'
+							value={value}
+							checked={filter === value}
+							onChange={handleOptionChange}
+							id={value}
+						/>
+						<Label htmlFor={value} color={color}>
+							{label}
+						</Label>
+					</RadioButton>
+				))}
 			</RadioButtonGroup>
 		</ModalContainer>
 	);
