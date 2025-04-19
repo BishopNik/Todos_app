@@ -21,11 +21,17 @@ import {
 	IconWrapper,
 	AddIcon,
 } from 'components/Modal/CreateNewBoardModal/CreateNewBoardModal.styled';
+import styled from 'styled-components';
 import { AddCardModal } from 'components/Modal';
 import { Card } from 'components/Card/Card';
 import { delColumn } from 'redux/columns/operations';
 import { MainContext } from 'components/Helpers';
 import { useCards, useCardEditing, useColumns } from 'hooks';
+
+const AddCardButton = styled(Button)`
+	width: 334px;
+	max-width: 95vw;
+`;
 
 export const Column = ({ columnData, refColumn, providedPlaceholder }) => {
 	const { name, _id } = columnData;
@@ -42,9 +48,13 @@ export const Column = ({ columnData, refColumn, providedPlaceholder }) => {
 
 	const handleDeleteColumn = columnId => {
 		if (statusColumn) return;
-		dispatch(delColumn(columnId)).then(() => {
-			dispatch(updateStateAfterDeleteColumn({ id: columnId }));
-		});
+		dispatch(delColumn(columnId))
+			.then(() => {
+				dispatch(updateStateAfterDeleteColumn({ id: columnId }));
+			})
+			.catch(error => {
+				console.error('Failed to delete column:', error);
+			});
 	};
 
 	const handleEditColumn = () => {
@@ -54,13 +64,9 @@ export const Column = ({ columnData, refColumn, providedPlaceholder }) => {
 	};
 
 	const memoizedCards = useMemo(() => {
-		if (_id && allCards[_id]?.length) {
-			const cardForColumn = allCards[_id]?.filter(card => {
-				if (filter === 'all') {
-					return card.columnId === _id;
-				} else {
-					return card.columnId === _id && card.priority === filter;
-				}
+		if (_id) {
+			const cardForColumn = (allCards[_id] || []).filter(card => {
+				return filter === 'all' || card.priority === filter;
 			});
 			return cardForColumn.map((card, ind) => ({ ...card, indexCard: ind }));
 		}
@@ -110,16 +116,12 @@ export const Column = ({ columnData, refColumn, providedPlaceholder }) => {
 					{providedPlaceholder}
 				</ListTasks>
 			</ListTasksContainer>
-			<Button
-				style={{ width: '334px', maxWidth: '95vw' }}
-				type='button'
-				onClick={() => setIsOpen(true)}
-			>
+			<AddCardButton aria-label='Add new card' type='button' onClick={() => setIsOpen(true)}>
 				<IconWrapper>
 					<AddIcon name='add-board' />
 				</IconWrapper>
 				<ButtonText>{!memoizedCards?.length ? 'Add card' : 'Add another card'}</ButtonText>
-			</Button>
+			</AddCardButton>
 			<AddCardModal
 				isOpen={isOpen}
 				onRequestClose={onRequestClose}
